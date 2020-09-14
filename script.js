@@ -1,69 +1,36 @@
-// class QuizModel {
-//     constructor() {}
-// };
+const leftAside = document.createElement("aside");
+const main = document.createElement("main");
+const rightAside = document.createElement("aside");
+let timerCount = 0;
 
-// class QuizView {
-//     constructor() {}
-// };
-
-// class QuizController {
-//     constructor(model , view) {
-//         this.model = model;
-//         this.view = view;
-//     };
-// };
-
-// const quizApp = new QuizController(new QuizModel(), new QuizView());
-
-function View(controller){
-    this.controller = controller;
-    this.heading =document.getElementById('heading');
+function init() {
+  document.body.setAttribute("class","container");
+  leftAside.setAttribute("id", "highscore");
+  leftAside.innerHTML = "View High Score"
+  rightAside.innerHTML = "Timer: <span></span>";
+  rightAside.children[0].setAttribute("id","timer");
+  main.innerHTML = "<div><h1>Coding Quiz Challenge</h1></div><div><p>Try to answer the following code-related questions with the time limit. Keep in mind that incorrect answers will penalize your score 1 point and reduce the timer by ten seconds.</p></div><div><button>Start Quiz</button></div>";
+  main.children[2].children[0].setAttribute("id","startBtn")
+  
+  
+  document.body.appendChild(leftAside);
+  document.body.appendChild(main);
+  document.body.appendChild(rightAside);
+  document.getElementById('timer').textContent =  timerCount;
 }
 
-function Model(){
-    this.heading = "HelloBy";
+init()
+
+document.getElementById("startBtn").addEventListener("click",function() {
+  main.innerHTML = "";
+  timerCount = 120;
+  console.log(timerCount);
+  rightAside.textContent = "Timer: " + timerCount;
+});
+
+
+function startTimer (){
+
 }
 
-// void handleEvent(
-//     in Event event
-//   );
 
-  function Controller(model){
-    var self = this;
-    this.model = model;
-  //EVENTLISTENER INTERFACE
-    this.handleEvent = function(e){
-      e.stopPropagation();
-      switch(e.type){
-        case "click":
-          self.clickHandler(e.target);
-          break;
-        default:
-          console.log(e.target);
-      }
-    }
-  //GET MODEL HEADING
-    this.getModelHeading = function(){
-      return self.model.heading;
-    }
-  //CHANGE THE MODEL
-    this.clickHandler = function(target){
-      self.model.heading = 'World';
-      target.innerText = self.getModelHeading();
-    }
-  }
-
-  function View(controller){
-    this.controller = controller;
-    this.heading = document.getElementById("heading");
-    this.heading.innerText = controller.getModelHeading();
-    this.heading.addEventListener('click', controller);
-}
-
-function main(){
-    var model = new Model();
-    var controller = new Controller(model);
-    var view = new View(controller);
-  }
-
-  main()
