@@ -15,12 +15,12 @@
 
 // const quizApp = new QuizController(new QuizModel(), new QuizView());
 
-function QuizView(controller){
+function View(controller){
     this.controller = controller;
     this.heading =document.getElementById('heading');
 }
 
-function QuizModel(){
+function Model(){
     this.heading = "HelloBy";
 }
 
@@ -28,7 +28,7 @@ function QuizModel(){
 //     in Event event
 //   );
 
-  function QuizController(model){
+  function Controller(model){
     var self = this;
     this.model = model;
   //EVENTLISTENER INTERFACE
@@ -61,9 +61,9 @@ function QuizModel(){
 }
 
 function main(){
-    var model = new QuizModel();
-    var controller = new QuizController(model);
-    var view = new QuizView(controller);
+    var model = new Model();
+    var controller = new Controller(model);
+    var view = new View(controller);
   }
 
   main()
