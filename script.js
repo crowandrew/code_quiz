@@ -3,6 +3,7 @@ const leftAside = document.createElement("aside");
 const main = document.createElement("main");
 const rightAside = document.createElement("aside");
 let timerCount = 0;
+let currentQuestion = 0;
 
 // Creating the initial page and defining attributes
 function init() {
@@ -23,24 +24,50 @@ function init() {
 init()
 
 // Building the quiz
-function buildQuiz () {
-  main.innerHTML = "<div><h1></h1></div><div></div><div></div>";
+function buildQuiz (questionNumber) {
+  main.innerHTML = "<div><h1></h1></div><div><ul><li></li><li></li><li></li><li></li></ul></div><div></div>";
   main.setAttribute("class","quiz");
   main.children[0].children[0].setAttribute("id","questionArea");
-  main.children[1].setAttribute("id","answerArea");
+  main.children[1].children[0].setAttribute("id","answerArea");
+  main.children[1].children[0].children[0].setAttribute("id","answerOne");
+  main.children[1].children[0].children[1].setAttribute("id","answerTwo");
+  main.children[1].children[0].children[2].setAttribute("id","answerThree");
+  main.children[1].children[0].children[3].setAttribute("id","answerFour");
   main.children[2].setAttribute("id","feedbackArea");
   const question = document.getElementById("questionArea");
-  const answers = document.getElementById("answerArea");
+  const answers = document.getElementById("answerArea")
+  const answerOne = document.getElementById("answerOne");
+  const answerTwo = document.getElementById("answerTwo");
+  const answerThree = document.getElementById("answerThree");
+  const answerFour = document.getElementById("answerFour");
   const feedback = document.getElementById("feedbackArea");
-
-  question.textContent = quizQuestions[0].question;
+    
+  question.textContent = quizQuestions[questionNumber].question;
+  answerOne.innerHTML = "<button></button>"
+  answerTwo.innerHTML = "<button></button>"
+  answerThree.innerHTML = "<button></button>"
+  answerFour.innerHTML = "<button></button>"
+  answerOne.children[0].textContent = quizQuestions[questionNumber].answers.a;
+  answerTwo.children[0].textContent = quizQuestions[questionNumber].answers.b;
+  answerThree.children[0].textContent = quizQuestions[questionNumber].answers.c;
+  answerFour.children[0].textContent = quizQuestions[questionNumber].answers.d;
   
-
+  // Event listener for quiz answers
+  answers.addEventListener("click", function(event) {
+    event.preventDefault();
+    if(event.target.matches("button")) {
+      console.log("This is A Button Click");
+    }
+  });
 }
+
+
 // Logging score for answer and giving feedback
 function logAnswer () {
-
+  currentQuestion ++
+  buildQuiz(currentQuestion)
 }
+
 
 // Building the high scores page
 function highScore () {
@@ -65,13 +92,16 @@ function startTimer () {
 document.getElementById("startBtn").addEventListener("click", function() {
   main.innerHTML = "";
   startTimer();
-  buildQuiz();
+  buildQuiz(currentQuestion);
 });
   // Event listener for HighScore button
 leftAside.addEventListener("click", function(){
   main.innerHTML = "";
   highScore();
 })
+
+
+
 
 
 
