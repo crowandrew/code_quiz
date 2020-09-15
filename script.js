@@ -3,6 +3,7 @@ const leftAside = document.createElement("aside");
 const main = document.createElement("main");
 const rightAside = document.createElement("aside");
 const numberQuestions = quizQuestions.length;
+let allHighScores = [];
 let timerCount = 0;
 let currentQuestion = 0;
 let score = 0;
@@ -81,16 +82,13 @@ function buildQuiz (questionNumber) {
 }
 
 
-// Logging score for answer and giving feedback
+// Moving to next question and giving feedback on last question
 function nextQuestion (answerCorrect) {
   currentQuestion ++
-  console.log(currentQuestion);
-  console.log(numberQuestions);
   if (currentQuestion !== numberQuestions){
     buildQuiz(currentQuestion)
   } else {
     gameOver();
-    console.log("PAUSE")
   }
   if (answerCorrect) {
     document.getElementById("feedbackArea").textContent = "Correct!"
@@ -139,8 +137,20 @@ function gameOver () {
   scoreForm.appendChild(inputIntials);
   scoreForm.appendChild(submit);
 
+  document.getElementById("submitBtn").addEventListener("click",function(event){
+    event.preventDefault();
+    console.log(inputIntials.value);
+    highScore()
+  })
 
 }
+
+// Storing High Scores
+function storeHighScores(){
+  localStorage.setitem("highscores",JSON.stringify(allHighScores));
+}
+
+
 
 // Quiz timer function
 function startTimer () {
@@ -150,6 +160,7 @@ function startTimer () {
     timerCount--;
     if (timerCount === 0) {
       document.getElementById('timer').textContent =  timerCount;
+      gameOver();
       clearInterval(timeInterval);
     }
     },1000);
