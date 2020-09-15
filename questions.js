@@ -210,34 +210,34 @@ const quizQuestions = [
         correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of the following attribute can hold the JavaScript version?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "LANGUAGE",
+            b: "SCRIPT",
+            c: "VERSION",
+            d: "None of the above"
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        answers: {
+            a: "<js>",
+            b: "<scripting>",
+            c: "<script>",
+            d: "<javascript>"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "JavaScript is ________",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "subjective",
+            b: "objective",
+            c: "evil",
+            d: "object based"
         },
-        correctAnswer: "c"
-    },
-    {
-        question: "Ask a question8?",
-        answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
-        },
-        correctAnswer: "c"
+        correctAnswer: "d"
     },
     {
         question: "Ask a question8?",
