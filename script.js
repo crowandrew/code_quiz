@@ -148,7 +148,8 @@ function highScore () {
 } 
 
 function gameOver () {
-  console.log(score);
+  timerCount = 0;
+  document.getElementById('timer').textContent =  timerCount;
   document.getElementById("questionArea").textContent = "All Done!";
   let finalMain = main.children[1];
   finalMain.innerHTML = "";
@@ -175,14 +176,11 @@ function gameOver () {
 
   document.getElementById("submitBtn").addEventListener("click",function(event){
     event.preventDefault();
-    console.log(inputIntials.value);
-    console.log(score);
     let initialText = inputIntials.value.trim();
     if (initialText === ""){
       return
     }
     let newHighScore = initialText + " - " + score;
-    console.log(newHighScore);
     allHighScores.push(newHighScore);
     highScore()
   })
@@ -196,7 +194,7 @@ function startTimer () {
     var timeInterval = setInterval(function(){
     document.getElementById('timer').textContent =  timerCount;
     timerCount--;
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       document.getElementById('timer').textContent =  timerCount;
       gameOver();
       clearInterval(timeInterval);
