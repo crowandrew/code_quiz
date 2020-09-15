@@ -1,43 +1,43 @@
 const quizQuestions = [
     {
-        question: "Ask a question?",
+        question: "How can you get the total number of arguments passed to a function?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Using args.length property",
+            b: "Using arguments.length property",
+            c: "Both of the above",
+            d: "None of the above"
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "Which built-in method returns the length of the string?",
+        answers: {
+            a: "length()",
+            b: "size()",
+            c: "index()",
+            d: "None of the above."
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "Which built-in method sorts the elements of an array?",
+        answers: {
+            a: "changeOrder(order)",
+            b: "order()",
+            c: "sort()",
+            d: "None of the above."
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question2?",
+        question: "Which of the following function of Number object returns the number's value?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "toString()",
+            b: "valueOf()",
+            c: "toLocaleString()",
+            d: "toPrecision()"
         },
-        correctAnswer: "c"
-    },
-    {
-        question: "Ask a question3?",
-        answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Ask a question4?",
-        answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
-        },
-        correctAnswer: "c"
+        correctAnswer: "b"
     },
     {
         question: "Ask a question5?",
