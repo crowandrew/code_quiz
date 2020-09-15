@@ -3,6 +3,7 @@ const main = document.createElement("main");
 const rightAside = document.createElement("aside");
 let timerCount = 0;
 
+// Initializes the Start of the Quiz
 function init() {
   document.body.setAttribute("class","container");
   leftAside.setAttribute("id", "highscore");
@@ -19,18 +20,17 @@ function init() {
   document.getElementById('timer').textContent =  timerCount;
 }
 
-init()
+function buildQuiz () {
+  cons =
+  
 
-document.getElementById("startBtn").addEventListener("click",function() {
-  main.innerHTML = "";
-  startTimer();
-});
+}
 
-
+// Timer for Quiz
 function startTimer (){
     timerCount = 120;
       
-    var timeInterval = setInterval(function(){
+    let timeInterval = setInterval(function(){
     document.getElementById('timer').textContent =  timerCount;
     timerCount--;
 
@@ -42,4 +42,11 @@ function startTimer (){
     },1000);
 }
 
+// Event Listeners
+document.getElementById("startBtn").addEventListener("click",function() {
+  main.innerHTML = "";
+  buildQuiz();
+  startTimer();
+});
 
+init()

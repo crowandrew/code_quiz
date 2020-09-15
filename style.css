@@ -21,7 +21,6 @@ aside:last-of-type {
 main {
     grid-column: 2/3;
     grid-row: 2/2;
-    background-color: darkgrey;
     text-align: center;
 }
 
