@@ -280,24 +280,24 @@ const quizQuestions = [
         correctAnswer: "b"
     },
     {
-        question: "Ask a question8?",
+        question: "Which event fires whenever a control loses focus?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "onclick",
+            b: "onmove",
+            c: "onblur",
+            d: "onchange"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "The function call Math.ceil(3.5) returns:",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "4",
+            b: "0",
+            c: "3",
+            d: "3.5"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
     }
 
 ]
