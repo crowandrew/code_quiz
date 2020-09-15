@@ -23,14 +23,23 @@ init()
 
 document.getElementById("startBtn").addEventListener("click",function() {
   main.innerHTML = "";
-  timerCount = 120;
-  console.log(timerCount);
-  rightAside.textContent = "Timer: " + timerCount;
+  startTimer();
 });
 
 
 function startTimer (){
+    timerCount = 120;
+      
+    var timeInterval = setInterval(function(){
+    document.getElementById('timer').textContent =  timerCount;
+    timerCount--;
 
+    if (timerCount === 0) {
+      document.getElementById('timer').textContent =  timerCount;
+      clearInterval(timeInterval);
+    }
+
+    },1000);
 }
 
 
