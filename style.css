@@ -47,6 +47,41 @@ button:hover {
     opacity: 0.8;
 }
 
+ol{
+    text-align: left;
+    list-style: none;
+    counter-reset: item;
+}
+
+ol li {
+    counter-increment: item;
+    margin-bottom: 5px;
+}
+
+ol li::before {
+    margin-right: 10px;
+    content: counter(item);
+    background: lightsalmon;
+    border-radius: 100%;
+    color: white;
+    width: 1.2em;
+    text-align: center;
+    display: inline-block
+}
+
+ol li:nth-child(odd) {
+    padding-left: 1em;
+    background:violet;
+    border: none;
+    border-radius: 5px;
+  }
+  
+ol li:nth-child(even) {
+    padding-left: 1em;
+    background:lightpink;
+    border: none;
+    border-radius: 5px;
+}
 
 .quiz {
     text-align: left;

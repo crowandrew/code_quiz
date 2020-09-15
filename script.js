@@ -115,7 +115,7 @@ function nextQuestion (answerCorrect) {
 // Building the high scores page
 function highScore () {
   main.innerHTML = "<div><h1>HighScore</h1></div><div></div><div></div>";
-  let highScoreList = document.createElement("ul");
+  let highScoreList = document.createElement("ol");
   main.children[1].appendChild(highScoreList);
   for (let i = 0; i < allHighScores.length; i++) {
     let highScore = allHighScores[i];

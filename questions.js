@@ -40,27 +40,37 @@ const quizQuestions = [
         correctAnswer: "b"
     },
     {
-        question: "Ask a question5?",
+        question: "Which of the following function of String object executes the search for a match between a regular expression and a specified string?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "concat()",
+            b: "match()",
+            c: "replace()",
+            d: "replace()"
         },
-        correctAnswer: "c"
+        correctAnswer: "d"
     },
     {
-        question: "Ask a question6?",
+        question: "Which of the following function of String object returns the calling string value converted to lower case?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "toLocaleLowerCase()",
+            b: "toLowerCase()",
+            c: "toString()",
+            d: "substring()"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
     },
     {
-        question: "Ask a question7?",
+        question: "Which of the following function of String object causes a string to be displayed as a subscript, as if it were in a <sub> tag?",
+        answers: {
+            a: "sup()",
+            b: "small()",
+            c: "strike()",
+            d: "sub()"
+        },
+        correctAnswer: "d"
+    },
+    {
+        question: "Ask a question8?",
         answers: {
             a: "Something",
             b: "Also Something",
@@ -79,4 +89,215 @@ const quizQuestions = [
         },
         correctAnswer: "c"
     },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Ask a question8?",
+        answers: {
+            a: "Something",
+            b: "Also Something",
+            c: "Maybe Something",
+            d: "Could be something"
+        },
+        correctAnswer: "c"
+    }
+
 ]
