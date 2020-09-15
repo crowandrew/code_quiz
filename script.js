@@ -2,8 +2,10 @@
 const leftAside = document.createElement("aside");
 const main = document.createElement("main");
 const rightAside = document.createElement("aside");
+const numberQuestions = quizQuestions.length;
 let timerCount = 0;
 let currentQuestion = 0;
+let score = 0;
 
 // Creating the initial page and defining attributes
 function init() {
@@ -18,6 +20,7 @@ function init() {
   document.body.appendChild(main);
   document.body.appendChild(rightAside);
   document.getElementById('timer').textContent =  timerCount;
+  score = 0;
 }
 
 // Calling the initial page
@@ -25,7 +28,7 @@ init()
 
 // Building the quiz
 function buildQuiz (questionNumber) {
-  main.innerHTML = "<div><h1></h1></div><div><ul><li></li><li></li><li></li><li></li></ul></div><div></div>";
+  main.innerHTML = "<div><h1></h1></div><div><ul><li></li><li></li><li></li><li></li></ul></div><div><h2></h2></div>";
   main.setAttribute("class","quiz");
   main.children[0].children[0].setAttribute("id","questionArea");
   main.children[1].children[0].setAttribute("id","answerArea");
@@ -33,40 +36,76 @@ function buildQuiz (questionNumber) {
   main.children[1].children[0].children[1].setAttribute("id","answerTwo");
   main.children[1].children[0].children[2].setAttribute("id","answerThree");
   main.children[1].children[0].children[3].setAttribute("id","answerFour");
-  main.children[2].setAttribute("id","feedbackArea");
+  main.children[2].children[0].setAttribute("id","feedbackArea");
   const question = document.getElementById("questionArea");
   const answers = document.getElementById("answerArea")
   const answerOne = document.getElementById("answerOne");
   const answerTwo = document.getElementById("answerTwo");
   const answerThree = document.getElementById("answerThree");
   const answerFour = document.getElementById("answerFour");
-  const feedback = document.getElementById("feedbackArea");
-    
+      
   question.textContent = quizQuestions[questionNumber].question;
   answerOne.innerHTML = "<button></button>"
   answerTwo.innerHTML = "<button></button>"
   answerThree.innerHTML = "<button></button>"
   answerFour.innerHTML = "<button></button>"
   answerOne.children[0].textContent = quizQuestions[questionNumber].answers.a;
+  answerOne.children[0].setAttribute("id","a")
   answerTwo.children[0].textContent = quizQuestions[questionNumber].answers.b;
+  answerTwo.children[0].setAttribute("id","b")
   answerThree.children[0].textContent = quizQuestions[questionNumber].answers.c;
+  answerThree.children[0].setAttribute("id","c")
   answerFour.children[0].textContent = quizQuestions[questionNumber].answers.d;
+  answerFour.children[0].setAttribute("id","d")
   
+
   // Event listener for quiz answers
   answers.addEventListener("click", function(event) {
     event.preventDefault();
     if(event.target.matches("button")) {
-      console.log("This is A Button Click");
+      let userAnswer = event.target.id;
+      let correctAnswer = quizQuestions[questionNumber].correctAnswer;
+      let answerCorrectly;
+      if (userAnswer === correctAnswer) {
+        score ++
+        answerCorrectly = true;
+      } else{
+        score --
+        timerCount = timerCount - 10;
+        document.getElementById('timer').textContent =  timerCount;
+        answerCorrectly = false
+      }
+      nextQuestion(answerCorrectly);
     }
   });
 }
 
 
 // Logging score for answer and giving feedback
-function logAnswer () {
+function nextQuestion (answerCorrect) {
   currentQuestion ++
-  buildQuiz(currentQuestion)
+  console.log(currentQuestion);
+  console.log(numberQuestions);
+  if (currentQuestion !== numberQuestions){
+    buildQuiz(currentQuestion)
+  } else {
+    gameOver();
+    console.log("PAUSE")
+  }
+  if (answerCorrect) {
+    document.getElementById("feedbackArea").textContent = "Correct!"
+    setTimeout(function(){document.getElementById("feedbackArea").textContent = "";
+  },1500);
+  } else {
+    document.getElementById("feedbackArea").textContent = "Wrong!"
+    setTimeout(function(){document.getElementById("feedbackArea").textContent = "";
+  },1500);
+  }
+  
 }
+
+
+
 
 
 // Building the high scores page
@@ -74,9 +113,38 @@ function highScore () {
   main.innerHTML = "<div><h1>HighScore</h1></div><div>Scores</div><div>Something</div>";
 } 
 
+function gameOver () {
+  console.log(score);
+  document.getElementById("questionArea").textContent = "All Done!";
+  let finalMain = main.children[1];
+  finalMain.innerHTML = "";
+  let h2 = document.createElement("h2");
+  h2.textContent = "Your final score is " + score;
+  let scoreForm = document.createElement("form");
+  scoreForm.setAttribute("id","finalForm");
+  let intials = document.createElement("label");
+  intials.setAttribute("for","userIN");
+  intials.textContent = "Enter Initials"
+  let inputIntials = document.createElement("input");
+  inputIntials.setAttribute("type","text");
+  inputIntials.setAttribute("id","userIN");
+  inputIntials.setAttribute("name","initials");
+  let submit = document.createElement("input")
+  submit.setAttribute("type","submit");
+  submit.setAttribute("value","Submit");
+  submit.setAttribute("id","submitBtn");
+  finalMain.appendChild(h2);
+  finalMain.appendChild(scoreForm);
+  scoreForm.appendChild(intials);
+  scoreForm.appendChild(inputIntials);
+  scoreForm.appendChild(submit);
+
+
+}
+
 // Quiz timer function
 function startTimer () {
-    timerCount = 120;
+    timerCount = 60;
     var timeInterval = setInterval(function(){
     document.getElementById('timer').textContent =  timerCount;
     timerCount--;
