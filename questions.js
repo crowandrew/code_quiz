@@ -107,65 +107,65 @@ const quizQuestions = [
             c: "<script ref=”main.js”>",
             d: "<script name=”main.js”>"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of the following is not a reserved word in JavaScript?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "interface",
+            b: "throws",
+            c: "program",
+            d: "short"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "Why so JavaScript and Java have similar name?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "JavaScript is a stripped-down version of Java",
+            b: "JavaScript's syntax is loosely based on Java's",
+            c: "They both originated on the island of Java",
+            d: "None of the above"
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "______ JavaScript is also called client-side JavaScript.",
+        answers: {
+            a: "Microsoft",
+            b: "Navigator",
+            c: "LiveWire",
+            d: "Native"
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "__________ JavaScript is also called server-side JavaScript.",
+        answers: {
+            a: "Microsoft",
+            b: "Navigator",
+            c: "LiveWire",
+            d: "Native"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "What are variables used for in JavaScript Programs?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Storing numbers, dates, or other values",
+            b: "Varying randomly",
+            c: "Causing high-school algebra flashbacks",
+            d: "None of the above"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "_____ JavaScript statements embedded in an HTML page can respond to user events such as mouse-clicks, form input, and page navigation.",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Ask a question8?",
-        answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Ask a question8?",
-        answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Client-side",
+            b: "Server-side",
+            c: "Local",
+            d: "Native"
         },
         correctAnswer: "c"
     },
