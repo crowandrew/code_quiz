@@ -3,7 +3,7 @@ const leftAside = document.createElement("aside");
 const main = document.createElement("main");
 const rightAside = document.createElement("aside");
 const numberQuestions = quizQuestions.length;
-let allHighScores = [];
+let allHighScores = ["AC - 8","AC - 6","TJ - 9"];
 let timerCount = 0;
 let currentQuestion = 0;
 let score = 0;
@@ -16,12 +16,18 @@ function init() {
   rightAside.innerHTML = "Timer: <span></span>";
   rightAside.children[0].setAttribute("id","timer");
   main.innerHTML = "<div><h1>Coding Quiz Challenge</h1></div><div><p>Try to answer the following code-related questions with the time limit. Keep in mind that incorrect answers will penalize your score 1 point and reduce the timer by ten seconds.</p></div><div><button>Start Quiz</button></div>";
+  main.setAttribute("class","");
   main.children[2].children[0].setAttribute("id","startBtn")
   document.body.appendChild(leftAside);
   document.body.appendChild(main);
   document.body.appendChild(rightAside);
   document.getElementById('timer').textContent =  timerCount;
   score = 0;
+  document.getElementById("startBtn").addEventListener("click", function() {
+    main.innerHTML = "";
+    startTimer();
+    buildQuiz(currentQuestion);
+  });
 }
 
 // Calling the initial page
@@ -122,11 +128,23 @@ function highScore () {
   }
   let goBack = document.createElement("button");
   goBack.textContent = "Go Back";
+  goBack.setAttribute("id","goBack");
   let clearHighScores = document.createElement("button");
-  clearHighScores.textContent = "Clear High Scores"
+  clearHighScores.textContent = "Clear High Scores";
+  clearHighScores.setAttribute("id","clearHighScores");
   main.children[2].appendChild(goBack);
   main.children[2].appendChild(clearHighScores);
 
+  document.getElementById("goBack").addEventListener("click", function() {
+    currentQuestion = 0;
+    init();
+  });
+
+  document.getElementById("clearHighScores").addEventListener("click", function() {
+    allHighScores = [];
+    highScore();
+  });
+  
 } 
 
 function gameOver () {
@@ -163,20 +181,13 @@ function gameOver () {
     if (initialText === ""){
       return
     }
-    console.log(initialText);
-    console.log(score);
-     
-    
+    let newHighScore = initialText + " - " + score;
+    console.log(newHighScore);
+    allHighScores.push(newHighScore);
     highScore()
   })
 
 }
-
-
-
-// Storing High Scores
-
-
 
 
 // Quiz timer function
