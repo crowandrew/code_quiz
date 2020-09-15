@@ -167,47 +167,47 @@ const quizQuestions = [
             c: "Local",
             d: "Native"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of the following can't be done with client-side JavaScript?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Validating a form",
+            b: "Sending a form's contents by email",
+            c: "Storing the form's contents to a database file on the server",
+            d: "None of the above"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of the following are capabilities of functions in JavaScript?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Return a value",
+            b: "Accept parameters and Return a value",
+            c: "Accept parameters",
+            d: "None of the above"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of the following is not a valid JavaScript variable name?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "2names",
+            b: "_first_and_last_names",
+            c: "FirstAndLast",
+            d: "None of the above"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "______ tag is an extension to HTML that can enclose any number of JavaScript statements.",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "<SCRIPT>",
+            b: "<BODY>",
+            c: "<HEAD>",
+            d: "<TITLE>"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
         question: "Ask a question8?",
