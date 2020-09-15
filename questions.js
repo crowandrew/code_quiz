@@ -240,44 +240,44 @@ const quizQuestions = [
         correctAnswer: "d"
     },
     {
-        question: "Ask a question8?",
+        question: "How do you create an object in JavaScript?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "var obj = {};",
+            b: "function Foo() {} var obj = new Foo();",
+            c: "All of these work",
+            d: "var obj = new Object();"
         },
         correctAnswer: "c"
     },
     {
-        question: "Ask a question8?",
+        question: "Primitive types are passed by :",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "Value",
+            b: "Pointer",
+            c: "Reference",
+            d: "Monkeys"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
     },
     {
-        question: "Ask a question8?",
+        question: "Which is not a primitive data type in JavaScript?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "boolean",
+            b: "number",
+            c: "string",
+            d: "character"
         },
-        correctAnswer: "c"
+        correctAnswer: "d"
     },
     {
-        question: "Ask a question8?",
+        question: "Which of these is not a logical operator?",
         answers: {
-            a: "Something",
-            b: "Also Something",
-            c: "Maybe Something",
-            d: "Could be something"
+            a: "!",
+            b: "&",
+            c: "&&",
+            d: "||"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
     },
     {
         question: "Ask a question8?",
