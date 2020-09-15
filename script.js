@@ -108,7 +108,25 @@ function nextQuestion (answerCorrect) {
 
 // Building the high scores page
 function highScore () {
-  main.innerHTML = "<div><h1>HighScore</h1></div><div>Scores</div><div>Something</div>";
+  main.innerHTML = "<div><h1>HighScore</h1></div><div></div><div></div>";
+  let highScoreList = document.createElement("ul");
+  main.children[1].appendChild(highScoreList);
+  for (let i = 0; i < allHighScores.length; i++) {
+    let highScore = allHighScores[i];
+    let li = document.createElement("li");
+    li.textContent = highScore;
+    li.setAttribute("data-index", i);
+
+  highScoreList.appendChild(li);
+    
+  }
+  let goBack = document.createElement("button");
+  goBack.textContent = "Go Back";
+  let clearHighScores = document.createElement("button");
+  clearHighScores.textContent = "Clear High Scores"
+  main.children[2].appendChild(goBack);
+  main.children[2].appendChild(clearHighScores);
+
 } 
 
 function gameOver () {
@@ -140,15 +158,24 @@ function gameOver () {
   document.getElementById("submitBtn").addEventListener("click",function(event){
     event.preventDefault();
     console.log(inputIntials.value);
+    console.log(score);
+    let initialText = inputIntials.value.trim();
+    if (initialText === ""){
+      return
+    }
+    console.log(initialText);
+    console.log(score);
+     
+    
     highScore()
   })
 
 }
 
+
+
 // Storing High Scores
-function storeHighScores(){
-  localStorage.setitem("highscores",JSON.stringify(allHighScores));
-}
+
 
 
 
