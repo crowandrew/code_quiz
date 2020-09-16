@@ -122,6 +122,30 @@ function highScore() {
   
 }
 
+// Quiz timer function
+function startTimer() {
+  let timeInterval = setInterval(function () {
+    document.getElementById('timer').textContent = timerCount;
+    timerCount--;
+    if (timerCount <= 0) {
+      document.getElementById('timer').textContent = timerCount;
+      gameOver();
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+}
+
+// Setting spread selectors
+function getQuerySelectors() {
+  const question = document.getElementById("questionArea");
+  const answers = document.getElementById("answerArea")
+  const answerOne = document.getElementById("answerOne");
+  const answerTwo = document.getElementById("answerTwo");
+  const answerThree = document.getElementById("answerThree");
+  const answerFour = document.getElementById("answerFour");
+  return [question, answerOne, answerTwo, answerThree, answerFour, answers]
+};
+
 // Rendering the current question
 function renderQuestions() {
   let qs = [...getQuerySelectors()];
@@ -172,30 +196,6 @@ function nextQuestion() {
     };
   });
 }
-
-// Quiz timer function
-function startTimer() {
-  let timeInterval = setInterval(function () {
-    document.getElementById('timer').textContent = timerCount;
-    timerCount--;
-    if (timerCount <= 0) {
-      document.getElementById('timer').textContent = timerCount;
-      gameOver();
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-}
-
-// Setting spread selectors
-function getQuerySelectors() {
-  const question = document.getElementById("questionArea");
-  const answers = document.getElementById("answerArea")
-  const answerOne = document.getElementById("answerOne");
-  const answerTwo = document.getElementById("answerTwo");
-  const answerThree = document.getElementById("answerThree");
-  const answerFour = document.getElementById("answerFour");
-  return [question, answerOne, answerTwo, answerThree, answerFour, answers]
-};
 
 // Storing high scores from gameOver 
 function storeScore(inputInitials) {
