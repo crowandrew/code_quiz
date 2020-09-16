@@ -1,12 +1,14 @@
 # Javascript Coding Quiz
 This is a timed code quiz on basic Javascript with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by  JavaScript code. There are no html elements everything will be created in the Javascript code. It has a a clean and polished user interface and is responsive.
 
-Link to deployed app: https://crowandrew.github.io/code_quiz/
+Link to deployed app: [Code Quiz](https://crowandrew.github.io/code_quiz/)
 
-![Code Quiz Screen Shot](./code-quiz-screenshot.png)
+![Code Quiz Screen Shot](./code-quiz-screenshot.png)  
 
-### Below I will break down the code:
+The code for the quiz is broken up into two files the `script.js` that is the logic for the quiz and the `questions.js` that stores the questions. I identified that the data (questions) is irrelevant to the implementation of the quiz so I created that as a separate js file. I then created a logical data structure that would store these questions. Lastly, I didn't make any assumptions in my implementation on how that data exists, so I can easily reuse that code and make a server side call to get the data like this if I want to build a different quiz in the future.         
+      
 
+### Below I will break down the code for the `script.js` that handles most of the logic:
 
 // Defining variables for initial setup 
 ```javascript
@@ -18,6 +20,11 @@ let allHighScores = [];
 let timerCount = 0;
 let currentQuestion = 0;
 let score = 0;
+```
+
+// Calling the initial page
+```javascript
+init()
 ```
 
 // Creating the initial page and defining attributes
@@ -43,11 +50,6 @@ function init() {
     buildQuiz();
   });
 }
-```
-
-// Calling the initial page
-```javascript
-init()
 ```
 
 // Building the quiz framework
@@ -76,6 +78,100 @@ function buildQuiz() {
   qs[4].children[0].setAttribute("id", "d");
   renderQuestions();
 }
+```
+
+// Building the final screen before entering your score
+```javascript
+function gameOver() {
+  timerCount = 0;
+  document.getElementById('timer').textContent = timerCount;
+  document.getElementById("questionArea").textContent = "All Done!";
+  let finalMain = main.children[1];
+  let h2 = document.createElement("h2");
+  let scoreForm = document.createElement("form");
+  let initials = document.createElement("label");
+  let inputInitials = document.createElement("input");
+  let submit = document.createElement("input")
+  finalMain.innerHTML = "";
+  h2.textContent = "Your final score is " + score;
+  initials.textContent = "Enter Initials"
+  scoreForm.setAttribute("id", "finalForm");
+  initials.setAttribute("for", "userIN");
+  inputInitials.setAttribute("type", "text");
+  inputInitials.setAttribute("id", "userIN");
+  inputInitials.setAttribute("name", "initials");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("value", "Submit");
+  submit.setAttribute("id", "submitBtn");
+  finalMain.appendChild(h2);
+  finalMain.appendChild(scoreForm);
+  scoreForm.appendChild(initials);
+  scoreForm.appendChild(inputInitials);
+  scoreForm.appendChild(submit);
+  
+  document.getElementById("submitBtn").addEventListener("click", function (event) {
+    event.preventDefault();
+    storeScore(inputInitials)
+    highScore()
+  });
+  
+}
+```
+
+// Building the high scores screen
+```javascript
+function highScore() {
+  main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
+  let goBack = document.createElement("button");
+  let clearHighScores = document.createElement("button");
+  clearHighScores.textContent = "Clear High Scores";
+  goBack.textContent = "Go Back";
+  goBack.setAttribute("id", "goBack");
+  main.setAttribute("class", "highScore");
+  clearHighScores.setAttribute("id", "clearHighScores");
+  main.children[2].appendChild(goBack);
+  main.children[2].appendChild(clearHighScores)
+  renderHighScores();
+  
+  document.getElementById("goBack").addEventListener("click", function () {
+    currentQuestion = 0;
+    init();
+  });
+  
+  document.getElementById("clearHighScores").addEventListener("click", function () {
+    allHighScores = [];
+    highScore();
+  });
+  
+}
+```
+
+// Quiz timer function
+```javascript
+function startTimer() {
+  let timeInterval = setInterval(function () {
+    document.getElementById('timer').textContent = timerCount;
+    timerCount--;
+    if (timerCount <= 0) {
+      document.getElementById('timer').textContent = timerCount;
+      gameOver();
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+}
+```
+
+// Setting spread selectors
+```javascript
+function getQuerySelectors() {
+  const question = document.getElementById("questionArea");
+  const answers = document.getElementById("answerArea")
+  const answerOne = document.getElementById("answerOne");
+  const answerTwo = document.getElementById("answerTwo");
+  const answerThree = document.getElementById("answerThree");
+  const answerFour = document.getElementById("answerFour");
+  return [question, answerOne, answerTwo, answerThree, answerFour, answers]
+};
 ```
 
 // Rendering the current question
@@ -133,54 +229,21 @@ function nextQuestion() {
 }
 ```
 
-// Building the final screen before entering your score
+// Storing high scores from gameOver 
 ```javascript
-function gameOver() {
-  timerCount = 0;
-  document.getElementById('timer').textContent = timerCount;
-  document.getElementById("questionArea").textContent = "All Done!";
-  let finalMain = main.children[1];
-  let h2 = document.createElement("h2");
-  let scoreForm = document.createElement("form");
-  let initials = document.createElement("label");
-  let inputInitials = document.createElement("input");
-  let submit = document.createElement("input")
-  finalMain.innerHTML = "";
-  h2.textContent = "Your final score is " + score;
-  initials.textContent = "Enter Initials"
-  scoreForm.setAttribute("id", "finalForm");
-  initials.setAttribute("for", "userIN");
-  inputInitials.setAttribute("type", "text");
-  inputInitials.setAttribute("id", "userIN");
-  inputInitials.setAttribute("name", "initials");
-  submit.setAttribute("type", "submit");
-  submit.setAttribute("value", "Submit");
-  submit.setAttribute("id", "submitBtn");
-  finalMain.appendChild(h2);
-  finalMain.appendChild(scoreForm);
-  scoreForm.appendChild(initials);
-  scoreForm.appendChild(inputInitials);
-  scoreForm.appendChild(submit);
-
-  document.getElementById("submitBtn").addEventListener("click", function (event) {
-    event.preventDefault();
-    let initialText = inputInitials.value.trim();
-    if (initialText === "") {
-      return
-    }
-    let newHighScore = score + "   " + initialText;
-    allHighScores.push(newHighScore);
-    highScore()
-  });
-
+function storeScore(inputInitials) {
+  let initialText = inputInitials.value.trim();
+  if (initialText === "") {
+    return
+  }
+  let newHighScore = score + "   " + initialText;
+  allHighScores.push(newHighScore);
 }
 ```
 
-// Building the high scores page
+// Render High Scores
 ```javascript
-function highScore() {
-  main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
-  main.setAttribute("class", "highScore");
+function renderHighScores(){
   let highScoreList = document.createElement("ol");
   main.children[1].appendChild(highScoreList);
   let allHighScoresSort = allHighScores.sort();
@@ -189,64 +252,17 @@ function highScore() {
     let li = document.createElement("li");
     li.textContent = highScore;
     li.setAttribute("data-index", i);
-
+    
     highScoreList.appendChild(li);
-
+    
   }
-  let goBack = document.createElement("button");
-  goBack.textContent = "Go Back";
-  goBack.setAttribute("id", "goBack");
-  let clearHighScores = document.createElement("button");
-  clearHighScores.textContent = "Clear High Scores";
-  clearHighScores.setAttribute("id", "clearHighScores");
-  main.children[2].appendChild(goBack);
-  main.children[2].appendChild(clearHighScores);
-
-  document.getElementById("goBack").addEventListener("click", function () {
-    currentQuestion = 0;
-    init();
-  });
-
-  document.getElementById("clearHighScores").addEventListener("click", function () {
-    allHighScores = [];
-    highScore();
-  });
-
 }
 ```
 
-// Quiz timer function
-```javascript
-function startTimer() {
-  let timeInterval = setInterval(function () {
-    document.getElementById('timer').textContent = timerCount;
-    timerCount--;
-    if (timerCount <= 0) {
-      document.getElementById('timer').textContent = timerCount;
-      gameOver();
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-}
-```
-
-// Setting spread selectors
-```javascript
-function getQuerySelectors() {
-  const question = document.getElementById("questionArea");
-  const answers = document.getElementById("answerArea")
-  const answerOne = document.getElementById("answerOne");
-  const answerTwo = document.getElementById("answerTwo");
-  const answerThree = document.getElementById("answerThree");
-  const answerFour = document.getElementById("answerFour");
-  return [question, answerOne, answerTwo, answerThree, answerFour, answers]
-};
-```
-
-// Event listener for HighScore button
+// Event listener for HighScore button in upper left on all pages
 ```javascript
 leftAside.addEventListener("click", function () {
   main.innerHTML = "";
   highScore();
-});
+})
 ```
