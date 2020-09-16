@@ -8,6 +8,9 @@ let timerCount = 0;
 let currentQuestion = 0;
 let score = 0;
 
+// Calling the initial page
+init()
+
 // Creating the initial page and defining attributes
 function init() {
   document.body.setAttribute("class", "container");
@@ -30,9 +33,6 @@ function init() {
     buildQuiz();
   });
 }
-
-// Calling the initial page
-init()
 
 // Building the quiz framework
 function buildQuiz() {
@@ -58,6 +58,68 @@ function buildQuiz() {
   qs[3].children[0].setAttribute("id", "c");
   qs[4].children[0].setAttribute("id", "d");
   renderQuestions();
+}
+
+// Building the final screen before entering your score
+function gameOver() {
+  timerCount = 0;
+  document.getElementById('timer').textContent = timerCount;
+  document.getElementById("questionArea").textContent = "All Done!";
+  let finalMain = main.children[1];
+  let h2 = document.createElement("h2");
+  let scoreForm = document.createElement("form");
+  let initials = document.createElement("label");
+  let inputInitials = document.createElement("input");
+  let submit = document.createElement("input")
+  finalMain.innerHTML = "";
+  h2.textContent = "Your final score is " + score;
+  initials.textContent = "Enter Initials"
+  scoreForm.setAttribute("id", "finalForm");
+  initials.setAttribute("for", "userIN");
+  inputInitials.setAttribute("type", "text");
+  inputInitials.setAttribute("id", "userIN");
+  inputInitials.setAttribute("name", "initials");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("value", "Submit");
+  submit.setAttribute("id", "submitBtn");
+  finalMain.appendChild(h2);
+  finalMain.appendChild(scoreForm);
+  scoreForm.appendChild(initials);
+  scoreForm.appendChild(inputInitials);
+  scoreForm.appendChild(submit);
+  
+  document.getElementById("submitBtn").addEventListener("click", function (event) {
+    event.preventDefault();
+    storeScore(inputInitials)
+    highScore()
+  });
+  
+}
+
+// Building the high scores screen
+function highScore() {
+  main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
+  let goBack = document.createElement("button");
+  let clearHighScores = document.createElement("button");
+  clearHighScores.textContent = "Clear High Scores";
+  goBack.textContent = "Go Back";
+  goBack.setAttribute("id", "goBack");
+  main.setAttribute("class", "highScore");
+  clearHighScores.setAttribute("id", "clearHighScores");
+  main.children[2].appendChild(goBack);
+  main.children[2].appendChild(clearHighScores)
+  renderHighScores();
+  
+  document.getElementById("goBack").addEventListener("click", function () {
+    currentQuestion = 0;
+    init();
+  });
+  
+  document.getElementById("clearHighScores").addEventListener("click", function () {
+    allHighScores = [];
+    highScore();
+  });
+  
 }
 
 // Rendering the current question
@@ -111,68 +173,6 @@ function nextQuestion() {
   });
 }
 
-// Building the final screen before entering your score
-function gameOver() {
-  timerCount = 0;
-  document.getElementById('timer').textContent = timerCount;
-  document.getElementById("questionArea").textContent = "All Done!";
-  let finalMain = main.children[1];
-  let h2 = document.createElement("h2");
-  let scoreForm = document.createElement("form");
-  let initials = document.createElement("label");
-  let inputInitials = document.createElement("input");
-  let submit = document.createElement("input")
-  finalMain.innerHTML = "";
-  h2.textContent = "Your final score is " + score;
-  initials.textContent = "Enter Initials"
-  scoreForm.setAttribute("id", "finalForm");
-  initials.setAttribute("for", "userIN");
-  inputInitials.setAttribute("type", "text");
-  inputInitials.setAttribute("id", "userIN");
-  inputInitials.setAttribute("name", "initials");
-  submit.setAttribute("type", "submit");
-  submit.setAttribute("value", "Submit");
-  submit.setAttribute("id", "submitBtn");
-  finalMain.appendChild(h2);
-  finalMain.appendChild(scoreForm);
-  scoreForm.appendChild(initials);
-  scoreForm.appendChild(inputInitials);
-  scoreForm.appendChild(submit);
-
-  document.getElementById("submitBtn").addEventListener("click", function (event) {
-    event.preventDefault();
-    storeScore(inputInitials)
-    highScore()
-  });
-
-}
-
-// Building the high scores page
-function highScore() {
-  main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
-  let goBack = document.createElement("button");
-  let clearHighScores = document.createElement("button");
-  clearHighScores.textContent = "Clear High Scores";
-  goBack.textContent = "Go Back";
-  goBack.setAttribute("id", "goBack");
-  main.setAttribute("class", "highScore");
-  clearHighScores.setAttribute("id", "clearHighScores");
-  main.children[2].appendChild(goBack);
-  main.children[2].appendChild(clearHighScores)
-  renderHighScores();
-
-  document.getElementById("goBack").addEventListener("click", function () {
-    currentQuestion = 0;
-    init();
-  });
-
-  document.getElementById("clearHighScores").addEventListener("click", function () {
-    allHighScores = [];
-    highScore();
-  });
-
-}
-
 // Quiz timer function
 function startTimer() {
   let timeInterval = setInterval(function () {
@@ -197,12 +197,6 @@ function getQuerySelectors() {
   return [question, answerOne, answerTwo, answerThree, answerFour, answers]
 };
 
-// Event listener for HighScore button
-leftAside.addEventListener("click", function () {
-  main.innerHTML = "";
-  highScore();
-})
-
 // Storing high scores from gameOver 
 function storeScore(inputInitials) {
   let initialText = inputInitials.value.trim();
@@ -223,11 +217,16 @@ function renderHighScores(){
     let li = document.createElement("li");
     li.textContent = highScore;
     li.setAttribute("data-index", i);
-
+    
     highScoreList.appendChild(li);
-
+    
   }
 }
 
+// Event listener for HighScore button in upper left on all pages
+leftAside.addEventListener("click", function () {
+  main.innerHTML = "";
+  highScore();
+})
 
 
