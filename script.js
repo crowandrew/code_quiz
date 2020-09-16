@@ -141,12 +141,7 @@ function gameOver() {
 
   document.getElementById("submitBtn").addEventListener("click", function (event) {
     event.preventDefault();
-    let initialText = inputInitials.value.trim();
-    if (initialText === "") {
-      return
-    }
-    let newHighScore = score + "   " + initialText;
-    allHighScores.push(newHighScore);
+    storeScore(inputInitials)
     highScore()
   });
 
@@ -219,8 +214,15 @@ leftAside.addEventListener("click", function () {
   highScore();
 })
 
-
-
+// Storing high scores from gameOver 
+function storeScore(inputInitials){
+let initialText = inputInitials.value.trim();
+    if (initialText === "") {
+      return
+    }
+    let newHighScore = score + "   " + initialText;
+    allHighScores.push(newHighScore);
+  }
 
 
 
