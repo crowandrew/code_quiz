@@ -145,7 +145,7 @@ function gameOver() {
     if (initialText === "") {
       return
     }
-    let newHighScore = initialText + "   " + score;
+    let newHighScore = score + "   " + initialText;
     allHighScores.push(newHighScore);
     highScore()
   });
