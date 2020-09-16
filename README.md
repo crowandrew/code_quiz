@@ -180,6 +180,7 @@ function gameOver() {
 ```javascript
 function highScore() {
   main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
+  main.setAttribute("class", "highScore");
   let highScoreList = document.createElement("ol");
   main.children[1].appendChild(highScoreList);
   let allHighScoresSort = allHighScores.sort();
