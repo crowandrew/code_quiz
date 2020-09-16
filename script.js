@@ -150,27 +150,16 @@ function gameOver() {
 // Building the high scores page
 function highScore() {
   main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
-  main.setAttribute("class", "highScore");
-  let highScoreList = document.createElement("ol");
-  main.children[1].appendChild(highScoreList);
-  let allHighScoresSort = allHighScores.sort();
-  for (let i = 0; i < allHighScores.length; i++) {
-    let highScore = allHighScoresSort[i];
-    let li = document.createElement("li");
-    li.textContent = highScore;
-    li.setAttribute("data-index", i);
-
-    highScoreList.appendChild(li);
-
-  }
   let goBack = document.createElement("button");
-  goBack.textContent = "Go Back";
-  goBack.setAttribute("id", "goBack");
   let clearHighScores = document.createElement("button");
   clearHighScores.textContent = "Clear High Scores";
+  goBack.textContent = "Go Back";
+  goBack.setAttribute("id", "goBack");
+  main.setAttribute("class", "highScore");
   clearHighScores.setAttribute("id", "clearHighScores");
   main.children[2].appendChild(goBack);
-  main.children[2].appendChild(clearHighScores);
+  main.children[2].appendChild(clearHighScores)
+  renderHighScores();
 
   document.getElementById("goBack").addEventListener("click", function () {
     currentQuestion = 0;
@@ -215,15 +204,30 @@ leftAside.addEventListener("click", function () {
 })
 
 // Storing high scores from gameOver 
-function storeScore(inputInitials){
-let initialText = inputInitials.value.trim();
-    if (initialText === "") {
-      return
-    }
-    let newHighScore = score + "   " + initialText;
-    allHighScores.push(newHighScore);
+function storeScore(inputInitials) {
+  let initialText = inputInitials.value.trim();
+  if (initialText === "") {
+    return
   }
+  let newHighScore = score + "   " + initialText;
+  allHighScores.push(newHighScore);
+}
 
+// Render High Scores
+function renderHighScores(){
+  let highScoreList = document.createElement("ol");
+  main.children[1].appendChild(highScoreList);
+  let allHighScoresSort = allHighScores.sort();
+  for (let i = 0; i < allHighScores.length; i++) {
+    let highScore = allHighScoresSort[i];
+    let li = document.createElement("li");
+    li.textContent = highScore;
+    li.setAttribute("data-index", i);
+
+    highScoreList.appendChild(li);
+
+  }
+}
 
 
 
