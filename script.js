@@ -27,7 +27,7 @@ function init() {
     main.innerHTML = "";
     timerCount = 60;
     startTimer();
-    buildQuiz(currentQuestion);
+    buildQuiz();
   });
 }
 
@@ -60,7 +60,7 @@ function buildQuiz() {
   renderQuestions();
 }
 
-// Render the current question
+// Rendering the current question
 function renderQuestions() {
   let qs = [...getQuerySelectors()];
   qs[0].textContent = quizQuestions[currentQuestion].question;
@@ -186,7 +186,6 @@ function highScore() {
   });
 
 }
-
 
 // Quiz timer function
 function startTimer() {
