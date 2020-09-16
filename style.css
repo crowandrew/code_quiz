@@ -11,6 +11,10 @@ aside:first-of-type {
     grid-row: 1;
     color: purple;
 }
+aside:first-of-type:hover {
+    cursor: default;
+    opacity: 0.8;
+}
     
 aside:last-of-type {
     grid-column: 3/4;
@@ -27,6 +31,8 @@ main {
 main div {
     padding: 2%;
 }
+
+
 
 button, #submitBtn {
     background-color: purple;
@@ -81,6 +87,10 @@ ol li:nth-child(even) {
 
 .quiz {
     text-align: left;
+}
+
+.highScore {
+    text-align: center;
 }
 
 ul {
