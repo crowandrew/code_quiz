@@ -157,8 +157,9 @@ function highScore() {
   main.innerHTML = "<div><h1>High Scores</h1></div><div></div><div></div>";
   let highScoreList = document.createElement("ol");
   main.children[1].appendChild(highScoreList);
+  let allHighScoresSort = allHighScores.sort();
   for (let i = 0; i < allHighScores.length; i++) {
-    let highScore = allHighScores[i];
+    let highScore = allHighScoresSort[i];
     let li = document.createElement("li");
     li.textContent = highScore;
     li.setAttribute("data-index", i);
