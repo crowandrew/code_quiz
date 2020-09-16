@@ -85,7 +85,7 @@ const quizQuestions = [
             a: "pop()",
             b: "push()",
             c: "reduce()",
-            d: "educeRight()"
+            d: "reduceRight()"
         },
         correctAnswer: "d"
     },
