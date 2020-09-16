@@ -3,6 +3,7 @@ const leftAside = document.createElement("aside");
 const main = document.createElement("main");
 const rightAside = document.createElement("aside");
 const numberQuestions = quizQuestions.length;
+
 let allHighScores = [];
 let timerCount = 60;
 let currentQuestion = 0;
@@ -35,7 +36,7 @@ function init() {
 // Calling the initial page
 init()
 
-// Building the quiz
+// Building the quiz framework
 function buildQuiz() {
   main.innerHTML = "<div><h1></h1></div><div><ul><li></li><li></li><li></li><li></li></ul></div><div><h2></h2></div>";
   main.setAttribute("class", "quiz");
@@ -46,52 +47,36 @@ function buildQuiz() {
   main.children[1].children[0].children[2].setAttribute("id", "answerThree");
   main.children[1].children[0].children[3].setAttribute("id", "answerFour");
   main.children[2].children[0].setAttribute("id", "feedbackArea");
-  const question = document.getElementById("questionArea");
-  const answers = document.getElementById("answerArea")
-  const answerOne = document.getElementById("answerOne");
-  const answerTwo = document.getElementById("answerTwo");
-  const answerThree = document.getElementById("answerThree");
-  const answerFour = document.getElementById("answerFour");
-
-
-  // question.textContent = quizQuestions[questionNumber].question;
-  answerOne.innerHTML = "<button></button>"
-  answerTwo.innerHTML = "<button></button>"
-  answerThree.innerHTML = "<button></button>"
-  answerFour.innerHTML = "<button></button>"
-  answerOne.children[0].setAttribute("id", "a")
-  answerTwo.children[0].setAttribute("id", "b")
-  answerThree.children[0].setAttribute("id", "c")
-  answerFour.children[0].setAttribute("id", "d")
-  // answerOne.children[0].textContent = quizQuestions[questionNumber].answers.a;
-  // answerOne.children[0].setAttribute("id","a")
-  // answerTwo.children[0].textContent = quizQuestions[questionNumber].answers.b;
-  // answerTwo.children[0].setAttribute("id","b")
-  // answerThree.children[0].textContent = quizQuestions[questionNumber].answers.c;
-  // answerThree.children[0].setAttribute("id","c")
-  // answerFour.children[0].textContent = quizQuestions[questionNumber].answers.d;
-  // answerFour.children[0].setAttribute("id","d")
-  renderQuestions(question, answerOne, answerTwo, answerThree, answerFour, answers);
-
-
+  let qa = [...getQuerySelectors()];
+  qa[1].innerHTML = "<button></button>"
+  qa[2].innerHTML = "<button></button>"
+  qa[3].innerHTML = "<button></button>"
+  qa[4].innerHTML = "<button></button>"
+  qa[1].children[0].setAttribute("id", "a")
+  qa[2].children[0].setAttribute("id", "b")
+  qa[3].children[0].setAttribute("id", "c")
+  qa[4].children[0].setAttribute("id", "d")
+  renderQuestions();
 }
 
-// Render Question
-function renderQuestions(question, answerOne, answerTwo, answerThree, answerFour, answers) {
-
-  question.textContent = quizQuestions[currentQuestion].question;
-  answerOne.children[0].textContent = quizQuestions[currentQuestion].answers.a;
-  answerTwo.children[0].textContent = quizQuestions[currentQuestion].answers.b;
-  answerThree.children[0].textContent = quizQuestions[currentQuestion].answers.c;
-  answerFour.children[0].textContent = quizQuestions[currentQuestion].answers.d;
-  nextQuestion(answers);
+// Render the current question
+function renderQuestions() {
+  let qa = [...getQuerySelectors()];
+  qa[0].textContent = quizQuestions[currentQuestion].question;
+  qa[1].children[0].textContent = quizQuestions[currentQuestion].answers.a;
+  qa[2].children[0].textContent = quizQuestions[currentQuestion].answers.b;
+  qa[3].children[0].textContent = quizQuestions[currentQuestion].answers.c;
+  qa[4].children[0].textContent = quizQuestions[currentQuestion].answers.d;
+  nextQuestion();
 }
 
-// Moving to next question and giving feedback on last question
-function nextQuestion(answers) {
-  answers.addEventListener("click", function (event) {
+// Checking if the answer is correct. Adding to score if right if wrong reducing score and time. Then loading next question
+function nextQuestion() {
+  let qa = [...getQuerySelectors()];
+  qa[5].addEventListener("click", function (event) {
     event.preventDefault();
     if (event.target.matches("button")) {
+      console.log(event.target.textContent);
       let userAnswer = event.target.id;
       let correctAnswer = quizQuestions[currentQuestion].correctAnswer;
       let answerCorrectly;
@@ -208,7 +193,6 @@ function gameOver() {
 
 }
 
-
 // Quiz timer function
 function startTimer() {
   var timeInterval = setInterval(function () {
@@ -222,6 +206,16 @@ function startTimer() {
   }, 1000);
 }
 
+// Setting global selectors
+function getQuerySelectors(){
+  const question = document.getElementById("questionArea");
+  const answers = document.getElementById("answerArea")
+  const answerOne = document.getElementById("answerOne");
+  const answerTwo = document.getElementById("answerTwo");
+  const answerThree = document.getElementById("answerThree");
+  const answerFour = document.getElementById("answerFour");
+  return [question, answerOne, answerTwo, answerThree, answerFour, answers]
+};
 
 // Event listener for HighScore button
 leftAside.addEventListener("click", function () {
