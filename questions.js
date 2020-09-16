@@ -1,3 +1,4 @@
+// Creating and array of objects to store all 30 questions
 const quizQuestions = [
     {
         question: "How can you get the total number of arguments passed to a function?",

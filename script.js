@@ -90,8 +90,6 @@ function nextQuestion() {
         document.getElementById('timer').textContent = timerCount;
         answerCorrectly = false;
       };
-
-
       currentQuestion++
       if (currentQuestion !== numberQuestions) {
         buildQuiz(currentQuestion);
@@ -109,7 +107,6 @@ function nextQuestion() {
           document.getElementById("feedbackArea").textContent = "";
         }, 1500);
       };
-
     };
   });
 }
@@ -204,7 +201,7 @@ function startTimer() {
   }, 1000);
 }
 
-// Setting global selectors
+// Setting spread selectors
 function getQuerySelectors() {
   const question = document.getElementById("questionArea");
   const answers = document.getElementById("answerArea")
