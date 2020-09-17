@@ -16,19 +16,19 @@ Link to deployed app: [Code Quiz](https://crowandrew.github.io/code_quiz/)
  
  Screenshot of initial screen
 
-![Code Quiz Initial Screen Shot](./code-quiz-screenshot.png)
+![Code Quiz Initial Screen Shot](./assets/images/code-quiz-screenshot.png)
 
 Screenshot of quiz screen
 
-![In Quiz Screen Shot](./quiz-screenshot.png)
+![In Quiz Screen Shot](./assets/images/quiz-screenshot.png)
 
 Screenshot of game over screen
 
-![Game Over Screen Shot](./game-over-screenshot.png)
+![Game Over Screen Shot](./assets/images/game-over-screenshot.png)
 
 Screenshot of high scores screen
 
-![High Scores Screen Shot](./high-score-screenshot.png)
+![High Scores Screen Shot](./assets/images/high-score-screenshot.png)
 
 -------------
 
